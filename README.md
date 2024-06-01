@@ -17,9 +17,17 @@ This implementation has been tested on Windows 11. The original repo implemented
    cd RandLA-Net-pytorch
    pip install -r requirements
    ```
-   **Common issue**: the setup file from torch-points-kernels package needs PyTorch to be previously installed. You may thus need to install PyTorch first and then `torch-points-kernels`.
+   **Common issue**: the setup file from torch-points-kernels package needs PyTorch to be previously installed. You may thus need to install PyTorch first and then `torch-points-kernels`. Check [this](https://pytorch.org/get-started/locally/) to install pytorch, while for `torch-point-kernels` use:
+   ```
+   pip install torch-points-kernels
+   ```
 4. Install Microsoft Visual Basic for C++
-5. A
+5. Install `cpp_subsampling`
+   ```
+   cd utils/cpp_wrappers/cpp_subsampling
+   python setup.py build_ext --inplace
+   ```
+7. You should now be able to train RandLA-Net models
 
 # How to use
 This repository only try Semantic Segmentation to train S3DIS data type on scene segmentation task. For other use please check the original documentation.
@@ -31,15 +39,22 @@ This repository only try Semantic Segmentation to train S3DIS data type on scene
    2_Data train 2.las
    3_Data test.las
    ```
+   ![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/6b204d73-3b15-44d3-8fe3-04d34b4a07fe)
+
 2. After las data is inside `data` folder, run
    ```
    python prepare_data.py
    ```
    It will create a new folder called `train` which contains *.NPY files as much as las data in `data` folder.
+   ![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/c9cf7eab-37ed-4836-8236-e70c2be54704)
+
 4. Finally, in order to subsample the point clouds using a grid subsampling, run:
    ```
    python subsample_data.py
    ```
+   It will create a new folder called `subsampled/train` which contains subsample result.
+   ![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/99a0a900-0c1f-40e7-b9eb-77a145a70449)
+
 
 ## Training
 Simply run the following script to start the training:
@@ -48,6 +63,8 @@ python train.py
 ```
 Several parser arguments that user can define:
 
+- `dataset`, Location of `subsampled` folder, default: `data/subsampled`
+- `epochs`, Number of epochs, default: 100
 - `log_dir`, Log directory to save or store the model
 - `load`, Path to load trained model
 
@@ -55,6 +72,10 @@ To load and retrain previous model:
 ```
 python train.py --load previous_model
 ```
+
+**Temporary** To change the test dataset, change in `utils/data.py` in line 74:
+![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/4bc7c058-5be9-4828-affb-27f50064b101)
+
 
 ## Test
 Simply run the following script to start the test:
