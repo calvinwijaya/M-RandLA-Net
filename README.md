@@ -76,6 +76,10 @@ python train.py --load previous_model
 **Temporary** To change the test dataset, change in `utils/data.py` in line 74:
 ![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/4bc7c058-5be9-4828-affb-27f50064b101)
 
+Training process:
+
+![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/db1845df-f894-4d79-85f4-defc46617749)
+
 
 ## Test
 Simply run the following script to start the test:
@@ -85,6 +89,10 @@ python test.py
 Several parser arguments that user can define:
 
 (will be updated)
+
+Testing process:
+
+![image](https://github.com/calvinwijaya/M-RandLA-Net/assets/88726143/431445ba-3f79-45b0-8058-c1c1f545b97e)
 
 
 # Citation
