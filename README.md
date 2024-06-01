@@ -48,8 +48,13 @@ python train.py
 ```
 Several parser arguments that user can define:
 
-- log_dir, Log directory to save or store the model
-- load, Path to load trained model
+- `log_dir`, Log directory to save or store the model
+- `load`, Path to load trained model
+
+To load and retrain previous model:
+```
+python train.py --load previous_model
+```
 
 ## Test
 Simply run the following script to start the test:
