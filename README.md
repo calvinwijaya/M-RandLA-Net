@@ -15,7 +15,7 @@ This implementation has been tested on Windows 11. The original repo implemented
 2. Install all Python dependencies
    ```
    cd RandLA-Net-pytorch
-   pip install -r requirements
+   pip install -r requirements.txt
    ```
    **Common issue**: the setup file from torch-points-kernels package needs PyTorch to be previously installed. You may thus need to install PyTorch first and then `torch-points-kernels`. Check [this](https://pytorch.org/get-started/locally/) to install pytorch, while for `torch-point-kernels` use:
    ```
